@@ -1,10 +1,13 @@
+// declaring all variables used in the script
+var array, arrayToString, character, dog, numberArray, removeSpecialChars, str, string;
+
 function newBreak() {
   console.log("\n****** New Snippet ******");
 }
   
 // convert passed value to a string literal
-var str = 394578;
-var string = String(str);
+str = 394578;
+string = String(str);
 console.log("Original string : " + string);
 
 newBreak();
@@ -16,7 +19,35 @@ str = str.toLowerCase();
 console.log("Modified string : " + str);
 
 newBreak();
+// covert all alphanumeric strings in an array to lower case letters
+console.log("*** Convert all array elements to Lower Case ***");
+arr = ["HELLO", "Hello", "heLLo"];
+console.log("Original Array : " + arr);
+for(i=0; i<arr.length; i++){
+  arr[i]=arr[i].toLowerCase();
+}
+console.log("Converted Array : " + arr);
 
+newBreak();
+// using functions covert all alphanumeric strings to lower case strings
+console.log("*** Using functions Convert all array elements to Lower Case ***");
+
+// take 'array' as input and return 'arr' as output
+function convertToLower(array){
+  console.log("\n\n==== In convertToLower Function ====");
+console.log("*** Convert all array elements to Lower Case ***");
+var arr = array;
+console.log("Original Array : " + arr);
+for(i=0; i<arr.length; i++){
+  arr[i]=arr[i].toLowerCase();
+}
+console.log("Converted Array : " + arr);
+
+console.log("\n\n==== Exit convertToLower Function ====");
+return arr;
+}
+
+newBreak();
 // remove the empty spaces from a string
 string = string.replace(/\s/g, '');
 console.log("Removing the spaces gives : " + string)
@@ -27,7 +58,7 @@ newBreak();
 
 // remove all special characters from the string
 console.log("REMOVE SPECIAL CHARACTERD FROM STRING");
-var removeSpecialChars = "abc's test#s";
+removeSpecialChars = "abc's test#s";
 console.log("Original string : " + removeSpecialChars);
 removeSpecialChars =  removeSpecialChars.replace(/[^a-zA-Z ]/g, "");
 console.log("Modified string : " + removeSpecialChars);
@@ -38,7 +69,7 @@ newBreak();
 function variable_type(variable) {
   console.log(variable.constructor);
 }
-var dog = {
+dog = {
   name : "Oreo",
   age : 15,
   breed : "Husky"
@@ -66,7 +97,7 @@ function isArray(variable){
   }
 }
 
-var dog = {
+dog = {
   name : "Oreo",
   age : 15,
   breed : "Siberian Husky"
@@ -80,7 +111,7 @@ newBreak();
 
 // split digits of a number to array
 function numberToArray(num) {
-  var numberArray = ("" + num).split("");
+  numberArray = ("" + num).split("");
   console.log(numberArray);
 }
 
@@ -89,7 +120,7 @@ numberToArray(15635);
 newBreak();
 
 // check if a character is upper or lower case
-var character = '5';
+character = '5';
 if (character == character.toUpperCase()) {
  alert ('upper case true');
 }
@@ -100,8 +131,8 @@ if (character == character.toLowerCase()){
 newBreak();
 
 // convert array to string
-var array = [1,"d",7,"6"];
+array = [1,"d",7,"6"];
 
-var arrayToString = array.join("");
+arrayToString = array.join("");
 
 console.log(arrayToString);

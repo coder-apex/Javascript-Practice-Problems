@@ -76,7 +76,7 @@ array_Clone([1, 2, [4, 0]]);
 
 
 
-3. Write a JavaScript function to get the first element of an array. Passing a parameter 'n' will return the first 'n' elements of the array. 
+--==@ SOLUTION @==--3. Write a JavaScript function to get the first element of an array. Passing a parameter 'n' will return the first 'n' elements of the array. 
 Test Data : 
 console.log(first([7, 9, 0, -2])); 
 console.log(first([],3));
@@ -395,7 +395,6 @@ findUnique(arr1);
 
 ==================================================================================
 
-
 9. Write a JavaScript program which accept a string as input and swap the case of each character. For example if you input 'The Quick Brown Fox' the output should be 'tHE qUICK bROWN fOX'. 
 
 --==@ SOLUTION @==--
@@ -436,285 +435,462 @@ swapCase('The Quick 5 Brown Fox');
 
 ==================================================================================
 
+10. Write a JavaScript program which prints the elements of the following array.
+Note : Use nested for loops.
+Sample array : var a = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+Sample Output : 
+"row 0" 
+" 1" 
+" 2" 
+" 1"
+" 24"
+"row 1" 
+------
+------
 
+--==@ SOLUTION @==--
 
+function printArrayRows(array) {
 
+  console.log("Original Array is :\n");
+  console.log(array);
+
+  // variables used to track length, position etc..
+  var i = 0;
+  var j = 0;
+
+  // function to get the required output
+  function getResult() {
+    for (i=0; i<array.length; i++) {
+      // first for loop to keep track of first level
+      console.log("row " + i);
+
+      for(j=0; j<array[i].length; j++){
+        console.log(array[i][j]);
+      }
+    }
+  }
+
+  // save the output as a string
+  var result = toString(getResult());
+
+  // Print the result
+  console.log(result);
+}
+
+var a = [
+  [1, 2, 1, 24],
+  [8, 11, 9, 4],
+  [7, 0, 7, 27],
+  [7, 4, 28, 14],
+  [3, 10, 26, 7]
+];
+printArrayRows(a);
+
+==================================================================================
+
+11. Write a JavaScript program to find the sum of squares of a numeric vector.
+
+--==@ SOLUTION @==--
+
+function vectorSquares(array) {
+  var sum = 0, 
+      i = array.length;
+  while (i--) 
+   sum += Math.pow(array[i], 2);
+  return sum;
+}
+ 
+console.log(vectorSquares([0,1,2,3,4]));
+
+==================================================================================
+
+12. Write a JavaScript program to compute the sum and product of an array of integers.
+
+--==@ SOLUTION @==--
+
+function sumArray(array) {
+  console.log("\n====\nIn sumArray Function");
+  var sum = 0;
+
+  for(var i=0; i<array.length; i++){
+    sum+=array[i];
+  }
+  console.log("Array Sum = " + sum);
+}
+
+function productArray(array) {
+  console.log("\n====\nIn productArray Function");
+  var product = 1;
+
+  for(i=0; i<array.length; i++){
+    product*=array[i];
+  }
+  console.log("Array Prod = " + product);
+}
+
+function sumAndProduct(array){
+
+  console.log("\n====\nIn sumAndProduct Function");
+  console.log("Array elements are : " + array);
+
+  sumArray(array);
+
+  productArray(array);
+}
+
+var array = [7, 4, 8, 3, 8];
+sumAndProduct(array);
+
+==================================================================================
+
+13. Write a JavaScript program to add items in an blank array and display the items.
+Sample Screen : 
+add elements in an blank array
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+14. Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity).
+
+--==@ SOLUTION @==--
+
+var array = [3, 6, 9, 3, "Hello", "hello", "heLLo"];
+// Expected output : 3, 6, 9, "hello"
+
+function convertToLower(array) {
+  console.log("\n\n==== In convertToLower Function ====\n\n");
+  console.log("*** Convert all array elements to Lower Case ***");
+
+  var arr = array;
+  console.log("Original Array : " + arr);
+  for (i = 0; i < arr.length; i++) {
+    arr[i] = arr[i].toString().toLowerCase();
+  }
+
+  console.log("Converted Array : " + arr);
+  console.log("\n==== Exit convertToLower Function ====\n\n");
+  return arr;
+}
+
+function dropDuplicateEntries(array) {
+  console.log("\n\n==== In dropDuplicateEntries Function ====\n\n");
+  console.log("*** Drop all duplicate entries in an array ***");
+
+  var arr = [];
+  console.log("Original Array : " + arr);
+
+  // copy element from array to arr only if it does not exist in arr already
+  for(i=0; i<array.length; i++){
+    if(arr.indexOf(array[i])<0){
+      arr.push(array[i]);
+      console.log(array[i] + " does not exist in arr. Copied!");
+      console.log(arr);
+    }
+  }
+
+  console.log("Converted Array : " + arr);
+  console.log("\n==== Exit dropDuplicateEntries Function ====\n\n");
+  return arr;
+}
+
+function dropDuplicates(array) {
+  console.log("\n\n=== In dropDuplicates Function.");
+
+  // make all the characters lower case
+  var arrayLower = convertToLower(array);
+
+  console.log("Original Array : " + array);
+  console.log("Modified Array : " + arrayLower);
+
+  // drop all duplicate entries from array
+  var result = dropDuplicateEntries(arrayLower);
+
+  console.log("RESULT : " + result);
+}
+
+dropDuplicates(array);
+
+==================================================================================
+
+15. We have the following arrays :
+color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+o = ["th","st","nd","rd"]
+Write a JavaScript program to display the colors in the following way :
+"1st choice is Blue ."
+"2nd choice is Green."
+"3rd choice is Red."
+- - - - - - - - - - - - -
+Note : Use ordinal numbers to tell their position.
+
+--==@ SOLUTION @==--
+
+function displayResult(color, o){
+  for(var i=0, position=1; i<color.length; i++){
+    if(i<3){
+      console.log(position + o[position] + " choice is " + color[i]);
+      position++;   
+    }
+    else{
+      console.log(position + o[0] + " choice is " + color[i]);
+      position++;   
+    }
+  }
+
+  return true;
+}
+
+color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+o = ["th","st","nd","rd"];
+
+displayResult(color, o);
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
-
-==================================================================================
-
-
-
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
-
+--==@ SOLUTION @==--
 
 ==================================================================================
 
 
 
+--==@ SOLUTION @==--
 
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
+
+==================================================================================
+
+
+
+--==@ SOLUTION @==--
 
 ==================================================================================
 
